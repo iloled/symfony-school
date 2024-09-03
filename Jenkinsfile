@@ -12,13 +12,13 @@ pipeline {
         stage('Run Linter') {
             steps {
                 // Run PHP_CodeSniffer
-                bat 'vendor/bin/phpcs'
+                bat 'php vendor/bin/phpcs'
             }
         }
 
         stage('Run Tests') {
             steps {
-                bat './vendor/bin/phpunit'
+                bat 'php vendor/bin/phpunit'
             }
         }
 
