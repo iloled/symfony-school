@@ -5,7 +5,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'composer install --no-interaction --no-optimize-autoloader'
+                bat 'composer install --no-interaction'
             }
         }
 
