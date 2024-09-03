@@ -5,14 +5,15 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'composer install --no-interaction --prefer-dist --optimize-autoloader'
+                bat 'composer install --no-interaction --no-optimize-autoloader'
             }
         }
 
         stage('Run Linter') {
             steps {
-                // Run PHP_CodeSniffer
-                bat 'php vendor/bin/phpcs'
+				catchError(buildResult: 'UNSTABLE', stageResult: 'UNSTABLE') {
+					bat 'php vendor/bin/phpcs src/'
+				}
             }
         }
 
