@@ -54,11 +54,6 @@ jobs:
       - name: Install Dependencies
         run: composer install --prefer-dist --no-progress
 
-              # Wait for MySQL to be ready
-      - name: Wait for MySQL
-        run: |
-          dockerize -wait tcp://localhost:3306 -timeout 1m
-
       # Setup database schema (if necessary after import)
       - name: Create database schema
         run: php bin/console doctrine:schema:update --force
