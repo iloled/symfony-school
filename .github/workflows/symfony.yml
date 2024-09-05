@@ -54,6 +54,10 @@ jobs:
       - name: Install Dependencies
         run: composer install --prefer-dist --no-progress
 
+            # DEBUG: Output DATABASE_URL to verify what Symfony is using
+      - name: Debug DATABASE_URL
+        run: echo "DATABASE_URL=${{ env.DATABASE_URL }}"
+
       # Setup database schema (if necessary after import)
       - name: Create database schema
         run: php bin/console doctrine:schema:update --force
